@@ -31,9 +31,9 @@ class FX29K{
   
     uint16_t getRawBridgeData(void);
   
-    float getPounds(void);
-    float getKilograms(void);
-    float getGrams(void);
+    double getPounds(void);
+    double getKilograms(void);
+    double getGrams(void);
   
     void write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
     void read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
