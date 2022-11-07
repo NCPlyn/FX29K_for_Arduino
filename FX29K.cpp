@@ -88,7 +88,7 @@ uint16_t FX29K::getRawBridgeData(void) {
    @brief Get weight in pounds (lbs).
    @return Weight, in pounds.
 */
-float FX29K::getPounds(void) {
+double FX29K::getPounds(void) {
   uint16_t bridgeData = getRawBridgeData();
   uint32_t net = 0;
   int8_t sign = 1;
@@ -100,14 +100,16 @@ float FX29K::getPounds(void) {
     net = _tare - bridgeData;
     sign = -1;
   }
-  return (net * _range / 14000.0) * sign;
+  double temp = net*100;
+  double temp2 = temp/14000;
+  return temp2;
 }
 
 /**
    @brief Get weight in kilograms (kg).
    @return Weight, in kilograms.
 */
-float FX29K::getKilograms(void) {
+double FX29K::getKilograms(void) {
   return getPounds() * 0.453592;
 }
 
@@ -115,7 +117,7 @@ float FX29K::getKilograms(void) {
    @brief Get weight in grams (g).
    @return Weight, in grams.
 */
-float FX29K::getGrams(void) {
+double FX29K::getGrams(void) {
   return getPounds() * 453.592;
 }
 
